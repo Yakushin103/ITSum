@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import store from './mockData/state';
+import store from './redux/state';
 import './index.css';
 
 let rerenderEntireTree = (state) => {
