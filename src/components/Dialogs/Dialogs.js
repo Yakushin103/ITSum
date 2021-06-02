@@ -1,45 +1,52 @@
 import React from 'react';
-import './Dialogs.css';
+
 import DialogItem from './DialogItem';
 import Message from './Message';
 
-const Dialogs = ({ state }) => {
+import { updateNewMessageBodyActionCreator, sendMessageActionCreator } from '../../redux/state'
+import './Dialogs.css';
 
-    const newMessageElement = React.createRef()
+const Dialogs = ({ state, dispatch }) => {
+
+    const onChangeMessage = (e) => {
+        let body = e.target.value
+        dispatch(updateNewMessageBodyActionCreator(body))
+    }
 
     const addMessage = () => {
-        let message = newMessageElement.current.value
-        alert(message)
+        dispatch(sendMessageActionCreator())
     }
 
     return (
         <div className="dialogs">
             <div className="dialogs-row">
                 <div className="dialog-items">
-                {
-                    state.dialogsData &&
-                    state.dialogsData.map(item => (
-                        <DialogItem
-                            name={item.name}
-                            id={item.id}
-                        />
-                    ))
-                }
+                    {
+                        state.dialogsData &&
+                        state.dialogsData.map(item => (
+                            <DialogItem
+                                key={item.id}
+                                name={item.name}
+                                id={item.id}
+                            />
+                        ))
+                    }
                 </div>
                 <div className="message-items">
-                {
-                    state.messageData &&
-                    state.messageData.map(item => (
-                        <Message 
-                            message={item.message}
-                        />
-                    ))
-                }
+                    {
+                        state.messageData &&
+                        state.messageData.map(item => (
+                            <Message
+                                key={item.id}
+                                message={item.message}
+                            />
+                        ))
+                    }
                 </div>
             </div>
             <div className="dialogs-row">
                 <div className="dialog-add">
-                    <textarea ref={newMessageElement} ></textarea>
+                    <textarea placeholder='Enter your message' value={state.newMessageBody} onChange={onChangeMessage}></textarea>
                     <button disabled={false} onClick={addMessage} > Add post </button>
                 </div>
             </div>

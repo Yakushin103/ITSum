@@ -1,11 +1,10 @@
 import React from 'react';
-import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 
+import './Navbar.css';
+
+
 const Navbar = () => {
-    // const handeleClick = (name) => {
-    //     console.log(name)
-    // }
     return (
         <nav className="nav">
             <div className="item">
