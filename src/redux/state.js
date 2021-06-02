@@ -1,8 +1,5 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSAGE = 'SEND-MESSAGE';
+import profileReducer from './profile-reducer'
+import dialogsReducer from './dialogs-reducer'
 
 let store = {
   _state: {
@@ -29,7 +26,8 @@ let store = {
         { id: 4, message: 'Bla bla bla' }
       ],
       newText: ''
-    }
+    },
+    sidebar: {}
   },
   _callSubscriber() {
   },
@@ -42,54 +40,13 @@ let store = {
   },
 
   dispatch(action) {
-    console.log('action.updateBody', action)
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        message: this._state.postPage.newText
-      }
-      this._state.postPage.postData.push(newPost)
-      this._state.postPage.newText = ''
+    
+    this._state.postPage = profileReducer(this._state.postPage, action)
 
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.postPage.newText = action.updateText
+    this._state.profilePage = dialogsReducer(this._state.profilePage, action)
 
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-      this._state.profilePage.newMessageBody = action.updateBody
-
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let newMessage = {
-        id: 5,
-        message: this._state.profilePage.newMessageBody
-      }
-      this._state.profilePage.messageData.push(newMessage)
-
-      this._state.profilePage.newMessageBody = ''
-
-      this._callSubscriber(this._state);
-    }
+    this._callSubscriber(this._state);
   }
 }
-
-export const addPostActionCreator = () => ({
-  type: ADD_POST
-})
-
-export const updateNewPostTextActionCreator = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  updateText: text
-})
-
-export const updateNewMessageBodyActionCreator = (body) => ({
-  type: UPDATE_NEW_MESSAGE_BODY,
-  updateBody: body
-})
-
-export const sendMessageActionCreator = () => ({
-  type: SEND_MESSAGE
-})
 
 export default store;

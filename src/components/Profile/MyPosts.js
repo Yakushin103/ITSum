@@ -2,7 +2,7 @@ import React from 'react';
 
 import Post from './Post';
 
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../redux/state'
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../redux/profile-reducer'
 
 const MyPosts = ({ postData, dispatch, newText }) => {
 
@@ -30,6 +30,7 @@ const MyPosts = ({ postData, dispatch, newText }) => {
                 postData &&
                 postData.map((item, i) => (
                     <Post
+                        key={i}
                         message={item.message}
                         id={i}
                     />
