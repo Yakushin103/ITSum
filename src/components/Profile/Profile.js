@@ -1,6 +1,6 @@
 import React from 'react';
 import './Profile.css';
-import MyPosts from './MyPosts';
+import MyPostsContainer from './MyPostsContainer';
 import MyAvatar from './MyAvatar';
 
 const Profile = ({ state, dispatch }) => {
@@ -9,7 +9,7 @@ const Profile = ({ state, dispatch }) => {
             <MyAvatar
 
             />
-            <MyPosts
+            <MyPostsContainer
                 newText={state.newText}
                 postData={state.postData}
                 dispatch={dispatch}

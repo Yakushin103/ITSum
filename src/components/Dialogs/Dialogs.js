@@ -3,18 +3,17 @@ import React from 'react';
 import DialogItem from './DialogItem';
 import Message from './Message';
 
-import { updateNewMessageBodyActionCreator, sendMessageActionCreator } from '../../redux/dialogs-reducer'
 import './Dialogs.css';
 
-const Dialogs = ({ state, dispatch }) => {
+const Dialogs = ({ dialogsPage, changeMessage, onAddMessage }) => {
 
     const onChangeMessage = (e) => {
         let body = e.target.value
-        dispatch(updateNewMessageBodyActionCreator(body))
+        changeMessage(body)
     }
 
     const addMessage = () => {
-        dispatch(sendMessageActionCreator())
+        onAddMessage()
     }
 
     return (
@@ -22,8 +21,8 @@ const Dialogs = ({ state, dispatch }) => {
             <div className="dialogs-row">
                 <div className="dialog-items">
                     {
-                        state.dialogsData &&
-                        state.dialogsData.map(item => (
+                        dialogsPage.dialogsData &&
+                        dialogsPage.dialogsData.map(item => (
                             <DialogItem
                                 key={item.id}
                                 name={item.name}
@@ -34,8 +33,8 @@ const Dialogs = ({ state, dispatch }) => {
                 </div>
                 <div className="message-items">
                     {
-                        state.messageData &&
-                        state.messageData.map(item => (
+                        dialogsPage.messageData &&
+                        dialogsPage.messageData.map(item => (
                             <Message
                                 key={item.id}
                                 message={item.message}
@@ -46,7 +45,7 @@ const Dialogs = ({ state, dispatch }) => {
             </div>
             <div className="dialogs-row">
                 <div className="dialog-add">
-                    <textarea placeholder='Enter your message' value={state.newMessageBody} onChange={onChangeMessage}></textarea>
+                    <textarea placeholder='Enter your message' value={dialogsPage.newMessageBody} onChange={onChangeMessage}></textarea>
                     <button disabled={false} onClick={addMessage} > Add post </button>
                 </div>
             </div>
