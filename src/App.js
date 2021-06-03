@@ -9,22 +9,18 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import './App.css';
 
 
-const App = ({ store, dispatch }) => {
+const App = () => {
   return (
     <div className="app-wrapper">
       <Header />
       <Navbar />
       <Route path="/dialogs" render={() =>
-        <DialogsContainer
-          state={store.profilePage}
-          dispatch={dispatch}
-        />}
+        <DialogsContainer />
+      }
       />
       <Route path="/profile" render={() =>
-        <Profile
-          state={store.postPage}
-          dispatch={dispatch}
-        />}
+        <Profile />
+      }
       />
     </div>
   );
