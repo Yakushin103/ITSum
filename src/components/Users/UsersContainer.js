@@ -5,7 +5,14 @@ import * as axios from 'axios';
 import Users from './Users';
 import Preloader from '../common/Preloader/Preloader'
 
-import { toggleIsFecthingAC, followAC, unFollowAC, setUsersAC, setCurrentPageAC, setTotalUsersCountAC } from "../../redux/users-reducer";
+import {
+  toggleIsFecthing,
+  follow,
+  unFollow,
+  setUsers,
+  setCurrentPage,
+  setTotalUsersCount
+} from "../../redux/users-reducer";
 
 class UsersContainer extends React.Component {
 
@@ -63,30 +70,12 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userId) => {
-      dispatch(followAC(userId))
-    },
-    unFollow: (userId) => {
-      dispatch(unFollowAC(userId))
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users))
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users))
-    },
-    setTotalUsersCount: (totalCount) => {
-      dispatch(setTotalUsersCountAC(totalCount))
-    },
-    setCurrentPage: (page) => {
-      dispatch(setCurrentPageAC(page))
-    },
-    toggleIsFecthing: (isFetching) => {
-      dispatch(toggleIsFecthingAC(isFetching))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+  follow,
+  unFollow,
+  setUsers,
+  setUsers,
+  setTotalUsersCount,
+  setCurrentPage,
+  toggleIsFecthing,
+})(UsersContainer);
