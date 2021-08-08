@@ -17,3 +17,8 @@
 .content .content-post {
     padding: 10px;
 }
+
+.content-avatar img {
+    width: 200px;
+    height: 200px;
+}

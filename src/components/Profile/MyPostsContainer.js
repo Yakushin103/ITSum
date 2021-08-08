@@ -7,8 +7,8 @@ import { addPost, updateNewPostText } from '../../redux/profile-reducer'
 
 const mapStateToProps = (state) => {
   return {
-    newText: state.postPage.newText,
-    postData: state.postPage.postData
+    newText: state.profilePage.newText,
+    postData: state.profilePage.postData
   }
 }
 

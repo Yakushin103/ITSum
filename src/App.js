@@ -9,7 +9,6 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 import './App.css';
 
-
 const App = () => {
   return (
     <div className="app-wrapper">
@@ -20,7 +19,7 @@ const App = () => {
       <Route path="/dialogs"
         render={() => <DialogsContainer />} />
 
-      <Route path="/profile"
+      <Route path="/profile/:userId?"
         render={() => <ProfileContainer />} />
 
       <Route path="/users"
