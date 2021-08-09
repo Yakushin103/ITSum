@@ -13,6 +13,7 @@ import {
   setCurrentPage,
   setTotalUsersCount
 } from "../../redux/users-reducer";
+import { usersAPI } from '../../api/api';
 
 class UsersContainer extends React.Component {
 
@@ -22,26 +23,21 @@ class UsersContainer extends React.Component {
 
   componentDidMount() {
     this.props.toggleIsFecthing(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count${this.props.pageSize}`, {
-      withCredentials: true
+
+    usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+      this.props.toggleIsFecthing(false)
+      this.props.setUsers(data.items)
+      this.props.setTotalUsersCount(data.totalCount)
     })
-      .then(res => {
-        this.props.toggleIsFecthing(false)
-        this.props.setUsers(res.data.items)
-        this.props.setTotalUsersCount(res.data.totalCount)
-      })
   }
 
   onPageChanged = (page) => {
     this.props.setCurrentPage(page)
     this.props.toggleIsFecthing(true)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count${this.props.pageSize}`, {
-      withCredentials: true
+    usersAPI.getUsers(page, this.props.pageSize).then(data => {
+      this.props.toggleIsFecthing(false)
+      this.props.setUsers(data.items)
     })
-      .then(res => {
-        this.props.toggleIsFecthing(false)
-        this.props.setUsers(res.data.items)
-      })
   }
 
   render() {
