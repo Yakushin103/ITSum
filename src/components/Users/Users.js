@@ -14,6 +14,8 @@ const Users = (props) => {
     pages.push(i);
   }
 
+  console.log('props.followingInProgress', props.followingInProgress);
+
   return <div>
     <div>
       {
@@ -42,22 +44,30 @@ const Users = (props) => {
             <div>
               {
                 u.followed ?
-                  <button onClick={() =>
+                  <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                    props.toggleFollowingProgress(true, u.id)
                     usersAPI.unFollow(u.id).then(data => {
                       if (data.resultCode === 0) {
                         props.unFollow(u.id)
                       }
+                      props.toggleFollowingProgress(false, u.id)
                     })
+                  }
+
                   }>UnFollow
 
                   </button>
                   :
-                  <button onClick={() =>
+                  <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                    props.toggleFollowingProgress(true, u.id)
                     usersAPI.follow(u.id).then(data => {
                       if (data.resultCode === 0) {
                         props.follow(u.id)
                       }
+                      props.toggleFollowingProgress(false, u.id)
                     })
+                  }
+
                   }>Follow
 
                   </button>
