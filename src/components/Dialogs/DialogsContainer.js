@@ -7,7 +7,8 @@ import { updateNewMessageBodyActionCreator, sendMessageActionCreator } from '../
 
 const mapStateToProps = (state) => {
     return {
-        dialogsPage: state.profilePage
+        dialogsPage: state.profilePage,
+        isAuth: state.auth.isAuth
     }
 }
 
