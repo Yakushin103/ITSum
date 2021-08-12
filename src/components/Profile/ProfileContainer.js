@@ -30,8 +30,6 @@ let mapStateToProps = (state) => ({
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
-withRouter
-
 export default connect(mapStateToProps, {
   userProfile
 })(WithUrlDataContainerComponent);

@@ -8,15 +8,10 @@ import {
   follow,
   unFollow,
   setCurrentPage,
-  toggleFollowingProgress,
   getUsers
 } from "../../redux/users-reducer";
 
 class UsersContainer extends React.Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize)
