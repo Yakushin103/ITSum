@@ -1,14 +1,14 @@
 import React from 'react';
 
 import MyPostsContainer from './MyPostsContainer';
-import MyAvatar from './MyAvatar';
+import ProfileInfo from './ProfileInfo';
 
 import './Profile.css';
 
 const Profile = (props) => {
   return (
     <div className="content">
-      <MyAvatar
+      <ProfileInfo
         profile={props.profile}
       />
       <MyPostsContainer />
