@@ -3,7 +3,7 @@ import React from 'react';
 import Preloader from '../common/Preloader/Preloader';
 import ProfileStatus from './ProfileStatus'
 
-const MyAvatar = (props) => {
+const ProfileInfo = (props) => {
 
   if (!props.profile) {
     return <Preloader />
@@ -16,10 +16,13 @@ const MyAvatar = (props) => {
       </div> */}
       <div className="content-avatar">
         <img alt="Avatar" src={props.profile.photos.large} />
-        <ProfileStatus status="Hello!!" />
+        <ProfileStatus
+          status={props.status}
+          updateUserStatus={props.updateUserStatus}
+        />
       </div>
     </div>
   )
 }
 
-export default MyAvatar;
+export default ProfileInfo;
