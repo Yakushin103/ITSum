@@ -4,23 +4,20 @@ import { compose } from 'redux';
 
 import Dialogs from './Dialogs';
 
-import { updateNewMessageBodyActionCreator, sendMessageActionCreator } from '../../redux/dialogs-reducer'
+import { sendMessageActionCreator } from '../../redux/dialogs-reducer'
 import { WithAuthRedirect } from '../../HOC/WithAuthRedirect';
 
 
 const mapStateToProps = (state) => {
   return {
-    dialogsPage: state.profilePage,
+    dialogsPage: state.postPage,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeMessage: (body) => {
-      dispatch(updateNewMessageBodyActionCreator(body))
-    },
-    onAddMessage: () => {
-      dispatch(sendMessageActionCreator())
+    onAddMessage: (newMessageBody) => {
+      dispatch(sendMessageActionCreator(newMessageBody))
     }
   }
 }
