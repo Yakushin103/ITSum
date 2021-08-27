@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '../common/FormsControl/FormsControl';
 import { required, maxLengthCreator } from '../../utils/validators';
-import { login, logout } from '../../redux/auth-reducer'
+import { login } from '../../redux/auth-reducer';
+
+import './Login.css';
 
 const maxLength = maxLengthCreator(30)
 
@@ -41,6 +43,13 @@ const LoginForm = (props) => {
           type="checkbox"
         /> remember me
       </div>
+
+      {
+        props.error &&
+        <div className="login-error">
+          {props.error}
+        </div>
+      }
 
       <div>
         <button>
