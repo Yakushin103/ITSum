@@ -1,6 +1,6 @@
 .nav {
     grid-area: n;
-    background: green;
+    background: goldenrod;
 }
 
 .nav .item {

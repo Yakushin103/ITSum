@@ -1,11 +1,13 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '../common/FormsControl/FormsControl';
-
 import { required, maxLengthCreator } from '../../utils/validators';
+import { login, logout } from '../../redux/auth-reducer'
 
-const maxLength = maxLengthCreator(10)
+const maxLength = maxLengthCreator(30)
 
 const LoginForm = (props) => {
 
@@ -15,9 +17,9 @@ const LoginForm = (props) => {
     <form onSubmit={handleSubmit}>
       <div>
         <Field
-          name="login"
+          name="email"
           component={Input}
-          placeholder="Login"
+          placeholder="Email"
           validate={[required, maxLength]}
         />
       </div>
@@ -53,10 +55,17 @@ const LoginReduxForm = reduxForm({
   form: 'login'
 })(LoginForm)
 
-const Login = (props) => {
+const Login = () => {
+  const dispatch = useDispatch()
+  const isAuth = useSelector((state) => state.auth.isAuth)
 
   const onSubmit = (formData) => {
-    console.log(formData);
+    let { email, password, rememberMe } = formData
+    dispatch(login(email, password, rememberMe))
+  }
+
+  if (isAuth) {
+    return <Redirect to={"/profile"} />
   }
 
   return (
@@ -64,7 +73,7 @@ const Login = (props) => {
       <h1>
         Login
       </h1>
-      
+
       <LoginReduxForm
         onSubmit={onSubmit}
       />

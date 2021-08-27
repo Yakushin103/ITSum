@@ -1,11 +1,25 @@
 .header {
     grid-area: h;
+    background: green;
 }
 
 .header img {
-    width: 20px;
+    width: 70px;
+    height: 60px;
 }
 
 .login-block {
     float: right;
+}
+
+.header-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header-login span {
+    display: flex;
+    align-items: flex-end;
+    margin-right: 1rem;
 }
