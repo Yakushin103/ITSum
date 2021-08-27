@@ -7,6 +7,7 @@ import dialogsReducer from './dialogs-reducer';
 import sidebarReducer from './sidebar-reducer';
 import userReducer from './users-reducer';
 import authReducer from './auth-reducer';
+import appReducer from './app-reducer';
 
 let reducers = combineReducers({
     postPage: dialogsReducer,
@@ -15,6 +16,7 @@ let reducers = combineReducers({
     usersPage: userReducer,
     auth: authReducer,
     form: formReducer,
+    app: appReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

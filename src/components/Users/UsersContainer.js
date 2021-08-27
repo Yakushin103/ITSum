@@ -11,7 +11,6 @@ import {
   setCurrentPage,
   getUsers
 } from "../../redux/users-reducer";
-import { WithAuthRedirect } from '../../HOC/WithAuthRedirect';
 
 class UsersContainer extends React.Component {
 
@@ -64,6 +63,5 @@ export default compose(
     unFollow,
     setCurrentPage,
     getUsers
-  }),
-  WithAuthRedirect
+  })
 )(UsersContainer)
