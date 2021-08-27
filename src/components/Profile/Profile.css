@@ -22,3 +22,7 @@
     width: 200px;
     height: 200px;
 }
+
+.content form button {
+    margin: 1rem 0;
+}

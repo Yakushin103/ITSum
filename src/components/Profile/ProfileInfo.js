@@ -2,6 +2,7 @@ import React from 'react';
 
 import Preloader from '../common/Preloader/Preloader';
 import ProfileStatus from './ProfileStatus'
+import { avaImage } from '../common/constant/Constant'
 
 const ProfileInfo = (props) => {
 
@@ -11,11 +12,8 @@ const ProfileInfo = (props) => {
 
   return (
     <div>
-      {/* <div>
-        <img alt="bg-Avatar" src="https://avatars.mds.yandex.net/get-pdb/2212586/6dda1a62-c391-4e13-b314-93ac53dafa89/s1200" />
-      </div> */}
       <div className="content-avatar">
-        <img alt="Avatar" src={props.profile.photos.large} />
+        <img alt="Avatar" src={props.profile.photos.large || avaImage} />
         <ProfileStatus
           status={props.status}
           updateUserStatus={props.updateUserStatus}

@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { avaImage } from '../common/constant/Constant'
+
 const Post = ({ message, id }) => {
 
   return (
     <div className="post" key={id}>
-      <img alt="Avatar" src="https://im0-tub-ru.yandex.net/i?id=1d9af1acd8beb09bba5f021b4e54a67a&n=13" />
+      <img alt="Avatar" src={avaImage} />
       {message}
     </div>
   );
