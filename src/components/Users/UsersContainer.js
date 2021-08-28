@@ -12,12 +12,12 @@ import {
   requestUsers
 } from "../../redux/users-reducer";
 import {
-  getUsers,
+  getUsersSelector,
   getPageSizes,
   getTotalCount,
   getCurrentPage,
   getIsFetching,
-  getFollowingInProgress,
+  getFollowingInProgress
 } from '../../redux/user-selectors'
 
 class UsersContainer extends React.Component {
@@ -54,7 +54,8 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
   return {
-    users: getUsers(state),
+    // users: getUsers(state),
+    users: getUsersSelector(state),
     pageSize: getPageSizes(state),
     totalCount: getTotalCount(state),
     currentPage: getCurrentPage(state),
@@ -62,17 +63,6 @@ let mapStateToProps = (state) => {
     followingInProgress: getFollowingInProgress(state)
   }
 }
-
-// let mapStateToProps = (state) => {
-//   return {
-//     users: state.usersPage.users,
-//     pageSize: state.usersPage.pageSize,
-//     totalCount: state.usersPage.totalCount,
-//     currentPage: state.usersPage.currentPage,
-//     isFetching: state.usersPage.isFetching,
-//     followingInProgress: state.usersPage.followingInProgress
-//   }
-// }
 
 export default compose(
   connect(mapStateToProps, {
