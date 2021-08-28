@@ -5,6 +5,8 @@
 
 .nav .item {
     color: white;
+    display: flex;
+    justify-content: center;
 }
 
 .nav .item a{
