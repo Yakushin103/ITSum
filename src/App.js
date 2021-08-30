@@ -17,7 +17,6 @@ import './App.css';
 const App = () => {
   const dispatch = useDispatch()
   const initialized = useSelector((state) => state.app.initialized)
-  const isAuth = useSelector((state) => state.auth.isAuth)
 
   useEffect(() => {
     dispatch(initializeApp())
@@ -32,6 +31,7 @@ const App = () => {
       <HeaderContainer />
 
       <Navbar />
+
       <div className="app-wrapper-content">
         <Route path="/dialogs"
           render={() => <DialogsContainer />} />
@@ -45,7 +45,6 @@ const App = () => {
         <Route path="/login"
           render={() => <Login />} />
       </div>
-
     </div>
   );
 }

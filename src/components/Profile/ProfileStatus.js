@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const ProfileStatus = (props) => {
+const ProfileStatus = ({ status, updateUserStatus }) => {
   const [editMode, setEditMode] = useState(false)
-  const [status, setStatus] = useState(props.status)
+  const [status, setStatus] = useState(status)
 
   useEffect(() => {
-    setStatus(props.status)
-  }, [props.status])
+    setStatus(status)
+  }, [status])
 
   const toggleEditMode = (e) => {
     setEditMode(!editMode)
-    props.updateUserStatus(status)
+    updateUserStatus(status)
   }
 
   const onStatusChange = (e) => {

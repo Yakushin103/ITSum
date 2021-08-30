@@ -24,12 +24,9 @@ export const initializedSuccses = () => ({
 })
 
 export const initializeApp = () => async (dispatch) => {
-  let promise = dispatch(setUser())
+  await dispatch(setUser())
 
-  Promise.all([promise])
-    .then(() => {
-      dispatch(initializedSuccses())
-    })
+  dispatch(initializedSuccses())
 }
 
 export default appReducer;
