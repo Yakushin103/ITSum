@@ -1,3 +1,27 @@
 .selected-Page {
   font-weight: bold;
 }
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.pagination span{
+  padding: 0 .3rem;
+}
+
+.pagination button {
+  margin: 0 .3rem;
+}
+
+.pagination span:hover,
+.pagination button:hover {
+  cursor: pointer;
+}
+
+.pagination span:hover {
+  font-weight: bold;
+  transition: .3s;
+}

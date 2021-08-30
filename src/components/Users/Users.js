@@ -17,10 +17,11 @@ const Users = ({
 
   return <div>
     <Pagination
-      totalCount={totalCount}
+      totalItemsCount={totalCount}
       pageSize={pageSize}
       onPageChanged={onPageChanged}
       currentPage={currentPage}
+      portionSize={10}
     />
     {
       users.map(u => (
