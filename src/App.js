@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import HeaderContainer from './components/Header/HeaderContainer';
 import Navbar from './components/Navbar/Navbar';
-import ProfileContainer from './components/Profile/ProfileContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import Login from './components/Login/Login';
-import Preloader from './components/common/Preloader/Preloader'
+import Preloader from './components/common/Preloader/Preloader';
 
 import { initializeApp } from './redux/app-reducer';
+import WithSuspenseLoading from './HOC/WithSuspenseLoading'
 
 import './App.css';
+
+const DialogsContainer = lazy(() =>
+  import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = lazy(() =>
+  import('./components/Profile/ProfileContainer'));
+const UsersContainer = lazy(() =>
+  import('./components/Users/UsersContainer'));
+const Login = lazy(() =>
+  import('./components/Login/Login'));
+
 
 const App = () => {
   const dispatch = useDispatch()
@@ -34,18 +41,18 @@ const App = () => {
 
       <div className="app-wrapper-content">
         <Route path="/dialogs"
-          render={() => <DialogsContainer />} />
+          render={WithSuspenseLoading(DialogsContainer)} />
 
         <Route path="/profile/:userId?"
-          render={() => <ProfileContainer />} />
+          render={WithSuspenseLoading(ProfileContainer)} />
 
         <Route path="/users"
-          render={() => <UsersContainer />} />
+          render={WithSuspenseLoading(UsersContainer)} />
 
         <Route path="/login"
-          render={() => <Login />} />
+          render={WithSuspenseLoading(Login)} />
       </div>
-    </div>
+    </div >
   );
 }
 
