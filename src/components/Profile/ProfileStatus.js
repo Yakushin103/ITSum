@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 
 const ProfileStatus = ({ status, updateUserStatus }) => {
   const [editMode, setEditMode] = useState(false)
-  const [status, setStatus] = useState(status)
+  const [localStatus, setStatus] = useState(status)
 
   useEffect(() => {
-    setStatus(status)
-  }, [status])
+    setStatus(localStatus)
+  }, [localStatus])
 
   const toggleEditMode = (e) => {
     setEditMode(!editMode)
-    updateUserStatus(status)
+    updateUserStatus(localStatus)
   }
 
   const onStatusChange = (e) => {
@@ -23,14 +23,14 @@ const ProfileStatus = ({ status, updateUserStatus }) => {
         !editMode ?
           <div>
             <span onDoubleClick={toggleEditMode} >
-              {status || "No status"}
+              {localStatus || "No status"}
             </span>
           </div> :
           <div>
             <input
               onChange={onStatusChange}
               onBlur={toggleEditMode}
-              value={status}
+              value={localStatus}
               autoFocus={true}
             />
           </div>
