@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 import Post from './Post';
@@ -8,8 +8,7 @@ import { required, maxLengthCreator } from '../../utils/validators';
 
 const maxLength = maxLengthCreator(10)
 
-const MyPosts = ({ postData, addPost }) => {
-
+const MyPosts = memo(({ postData, addPost }) => {
   const onAddPost = (values) => {
     addPost(values.newPostText)
   }
@@ -32,7 +31,7 @@ const MyPosts = ({ postData, addPost }) => {
       }
     </div>
   );
-}
+})
 
 const AddNewPostForm = (props) => {
   return (

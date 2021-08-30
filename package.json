@@ -1,5 +1,5 @@
 {
-  "name": "social-network",
+  "name": "Yakushin103",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -31,5 +31,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "social-network on react-redux",
+  "main": "index.js",
+  "repository": "https://github.com/Yakushin103/ITSum.git",
+  "author": "Vasso",
+  "license": "MIT"
 }
