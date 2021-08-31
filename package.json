@@ -2,6 +2,7 @@
   "name": "Yakushin103",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://yakushin103.github.io/ITSum",
   "dependencies": {
     "axios": "^0.21.1",
     "react": "^16.12.0",
@@ -9,7 +10,6 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^4.0.3",
-    "react-test-renderer": "^17.0.2",
     "redux": "^4.1.0",
     "redux-form": "^8.3.7",
     "redux-thunk": "^2.3.0",
@@ -19,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -37,5 +39,9 @@
   "main": "index.js",
   "repository": "https://github.com/Yakushin103/ITSum.git",
   "author": "Vasso",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^3.2.3",
+    "react-test-renderer": "^17.0.2"
+  }
 }
