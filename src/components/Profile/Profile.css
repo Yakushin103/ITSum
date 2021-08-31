@@ -26,3 +26,13 @@
 .content form button {
     margin: 1rem 0;
 }
+
+.profile-contact {
+    padding-left: .8rem;
+}
+
+.profile-form__error {
+    border: 1px solid red;
+    padding: 5px;
+    color: red;
+  }

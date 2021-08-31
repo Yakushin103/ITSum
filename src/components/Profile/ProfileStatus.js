@@ -22,6 +22,7 @@ const ProfileStatus = ({ status, updateUserStatus }) => {
       {
         !editMode ?
           <div>
+            <b>Status :</b>
             <span onDoubleClick={toggleEditMode} >
               {localStatus || "No status"}
             </span>

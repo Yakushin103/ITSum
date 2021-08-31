@@ -10,7 +10,8 @@ const Profile = ({
   isOwner,
   status,
   profile,
-  updateUserStatus
+  updateUserStatus,
+  saveProfile,
 }) => {
   return (
     <div className="content">
@@ -20,6 +21,7 @@ const Profile = ({
         status={status}
         profile={profile}
         updateUserStatus={updateUserStatus}
+        saveProfile={saveProfile}
       />
       
       <MyPostsContainer />

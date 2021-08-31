@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Preloader from '../common/Preloader/Preloader';
-import ProfileStatus from './ProfileStatus'
-import { avaImage } from '../common/constant/Constant'
+import ProfileStatus from './ProfileStatus';
+import ProfileData from './ProfileData';
+import ProfileDataForm from './ProfileDataForm';
+import { avaImage } from '../common/constant/Constant';
 
 const ProfileInfo = ({
   profile,
   status,
   updateUserStatus,
   isOwner,
-  savePhoto }) => {
+  savePhoto,
+  saveProfile, }) => {
+  const [editMode, setEditMode] = useState(false)
 
   if (!profile) {
     return <Preloader />
@@ -19,6 +23,13 @@ const ProfileInfo = ({
     if (e.target.files.length) {
       savePhoto(e.target.files[0])
     }
+  }
+
+  const onSubmit = (formData) => {
+    let userId = profile.userId
+    saveProfile(formData, userId).then(() => {
+      setEditMode(!editMode)
+    })
   }
 
   return (
@@ -31,6 +42,21 @@ const ProfileInfo = ({
             onChange={onMainPhotoSelected}
             type="file" />
         }
+
+        {
+          editMode ?
+            <ProfileDataForm
+              initialValues={profile}
+              onSubmit={onSubmit}
+              profile={profile}
+            /> :
+            <ProfileData
+              isOwner={isOwner}
+              profile={profile}
+              onEditMode={() => setEditMode(!editMode)}
+            />
+        }
+
         <ProfileStatus
           status={status}
           updateUserStatus={updateUserStatus}
