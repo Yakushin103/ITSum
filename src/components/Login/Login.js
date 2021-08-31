@@ -12,7 +12,8 @@ import './Login.css';
 
 const maxLength = maxLengthCreator(30)
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
+  console.log();
 
   return (
     <form onSubmit={handleSubmit}>
@@ -35,6 +36,18 @@ const LoginForm = ({ handleSubmit, error }) => {
         </div>
       }
 
+      {
+        captchaUrl &&
+        <>
+          <img src={captchaUrl} alt="Captcha" />
+          {
+            CreateField("Captcha",
+              "captcha",
+              [required],
+              Input)}
+        </>
+      }
+
       <div>
         <button>
           Login
@@ -51,10 +64,11 @@ const LoginReduxForm = reduxForm({
 const Login = () => {
   const dispatch = useDispatch()
   const isAuth = useSelector((state) => state.auth.isAuth)
+  const captchaUrl = useSelector((state) => state.auth.captchaUrl)
 
   const onSubmit = (formData) => {
-    let { email, password, rememberMe } = formData
-    dispatch(login(email, password, rememberMe))
+    let { email, password, rememberMe, captcha } = formData
+    dispatch(login(email, password, rememberMe, captcha))
   }
 
   if (isAuth) {
@@ -69,6 +83,7 @@ const Login = () => {
 
       <LoginReduxForm
         onSubmit={onSubmit}
+        captchaUrl={captchaUrl}
       />
     </div>
   )
