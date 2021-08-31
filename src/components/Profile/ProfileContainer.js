@@ -5,13 +5,13 @@ import { compose } from 'redux';
 
 import Profile from './Profile';
 
-import { userProfile, getUserStatus, updateUserStatus } from '../../redux/profile-reducer';
+import { userProfile, getUserStatus, updateUserStatus, savePhoto } from '../../redux/profile-reducer';
 // import { WithAuthRedirect } from '../../HOC/WithAuthRedirect';
 
 
 class ProfileContainer extends React.Component {
 
-  componentDidMount() {
+  refreshProfile() {
     let userId = this.props.match.params.userId
 
     if (!userId) {
@@ -25,14 +25,26 @@ class ProfileContainer extends React.Component {
     this.props.getUserStatus(userId)
   }
 
+  componentDidMount() {
+    this.refreshProfile()
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId) {
+      this.refreshProfile()
+    }
+  }
+
   render() {
 
     return (
       <Profile
         {...this.props}
+        isOwner={!this.props.match.params.userId}
         profile={this.props.profile}
         status={this.props.status}
         updateUserStatus={this.props.updateUserStatus}
+        savePhoto={this.props.savePhoto}
       />
     );
   }
@@ -50,6 +62,7 @@ export default compose(
     userProfile,
     getUserStatus,
     updateUserStatus,
+    savePhoto,
   }),
   withRouter,
   // WithAuthRedirect

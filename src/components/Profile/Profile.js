@@ -5,14 +5,23 @@ import ProfileInfo from './ProfileInfo';
 
 import './Profile.css';
 
-const Profile = (props) => {
+const Profile = ({
+  savePhoto,
+  isOwner,
+  status,
+  profile,
+  updateUserStatus
+}) => {
   return (
     <div className="content">
       <ProfileInfo
-        status={props.status}
-        profile={props.profile}
-        updateUserStatus={props.updateUserStatus}
+        savePhoto={savePhoto}
+        isOwner={isOwner}
+        status={status}
+        profile={profile}
+        updateUserStatus={updateUserStatus}
       />
+      
       <MyPostsContainer />
     </div>
   );
