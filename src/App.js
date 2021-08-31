@@ -1,5 +1,5 @@
-import React, { useEffect, lazy, Suspense } from 'react';
-import { Route } from 'react-router-dom';
+import React, { useEffect, lazy } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Preloader from './components/common/Preloader/Preloader';
 
 import { initializeApp } from './redux/app-reducer';
-import WithSuspenseLoading from './HOC/WithSuspenseLoading'
+import WithSuspenseLoading from './HOC/WithSuspenseLoading';
 
 import './App.css';
 
@@ -19,6 +19,9 @@ const UsersContainer = lazy(() =>
   import('./components/Users/UsersContainer'));
 const Login = lazy(() =>
   import('./components/Login/Login'));
+const PageNotFound = lazy(() =>
+  import('./components/common/PageNotFound/PageNotFound'));
+
 
 
 const App = () => {
@@ -40,17 +43,25 @@ const App = () => {
       <Navbar />
 
       <div className="app-wrapper-content">
-        <Route path="/dialogs"
-          render={WithSuspenseLoading(DialogsContainer)} />
+        <Switch>
+          <Route exact path="/"
+            render={() => <Redirect to="/profile" />} />
 
-        <Route path="/profile/:userId?"
-          render={WithSuspenseLoading(ProfileContainer)} />
+          <Route path="/dialogs"
+            render={WithSuspenseLoading(DialogsContainer)} />
 
-        <Route path="/users"
-          render={WithSuspenseLoading(UsersContainer)} />
+          <Route path="/profile/:userId?"
+            render={WithSuspenseLoading(ProfileContainer)} />
 
-        <Route path="/login"
-          render={WithSuspenseLoading(Login)} />
+          <Route path="/users"
+            render={WithSuspenseLoading(UsersContainer)} />
+
+          <Route path="/login"
+            render={WithSuspenseLoading(Login)} />
+
+          <Route path="*"
+            render={WithSuspenseLoading(PageNotFound)} />
+        </Switch>
       </div>
     </div >
   );
