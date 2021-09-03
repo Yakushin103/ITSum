@@ -1,5 +1,5 @@
 {
-  "name": "Yakushin103",
+  "name": "vasso_yakushin",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://yakushin103.github.io/ITSum",
@@ -36,12 +36,20 @@
     ]
   },
   "description": "social-network on react-redux",
-  "main": "index.js",
+  "module": "index.js",
+  "type": "module",
   "repository": "https://github.com/Yakushin103/ITSum.git",
   "author": "Vasso",
   "license": "MIT",
   "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.7.10",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "@types/redux-form": "^8.3.2",
     "gh-pages": "^3.2.3",
-    "react-test-renderer": "^17.0.2"
+    "react-test-renderer": "^17.0.2",
+    "typescript": "^4.4.2"
   }
 }
