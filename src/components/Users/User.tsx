@@ -1,11 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { UserType } from '../../types/types';
+
+type PropsType = {
+  user: UserType,
+  followingInProgress: Array<number>,
+  unFollow: (userId: number) => void,
+  follow: (userId: number) => void
+}
+
 const User = ({
   user,
   followingInProgress,
   unFollow,
-  follow }) => {
+  follow }: PropsType) => {
 
   return (
     <div>

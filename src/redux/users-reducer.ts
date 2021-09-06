@@ -20,7 +20,7 @@ type InitialStateType = {
   followingInProgress: [] | Array<number>
 }
 
-const initialState = {
+const initialState: InitialStateType = {
   users: [],
   pageSize: 10,
   totalCount: 0,

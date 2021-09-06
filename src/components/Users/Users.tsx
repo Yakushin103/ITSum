@@ -2,8 +2,20 @@ import React from 'react';
 
 import Pagination from '../common/Pagination/Pagination';
 import User from './User';
+import { UserType } from '../../types/types';
 
 import './Users.css';
+
+type PropsType = {
+  totalCount: number,
+  pageSize: number,
+  currentPage: number,
+  users: Array<UserType>,
+  onPageChanged: (pageNumber: number) => void,
+  followingInProgress: Array<number>,
+  unFollow: (userId: number) => void,
+  follow: (userId: number) => void
+}
 
 const Users = ({
   totalCount,
@@ -13,7 +25,7 @@ const Users = ({
   onPageChanged,
   followingInProgress,
   unFollow,
-  follow }) => {
+  follow }: PropsType) => {
 
   return <div>
     <Pagination

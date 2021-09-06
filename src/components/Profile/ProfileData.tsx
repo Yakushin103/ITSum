@@ -1,8 +1,15 @@
 import React from 'react';
 
 import Contacts from './Contacts';
+import { ProfileType } from '../../types/types';
 
-const ProfileData = ({ profile, isOwner, onEditMode }) => {
+type PropsType = {
+  profile: ProfileType,
+  isOwner: boolean,
+  onEditMode: () => void
+}
+
+const ProfileData = ({ profile, isOwner, onEditMode }: PropsType) => {
 
   return (
     <div>
@@ -30,6 +37,7 @@ const ProfileData = ({ profile, isOwner, onEditMode }) => {
           <Contacts
             key={key}
             contactTitle={key}
+            //@ts-ignore
             contactValue={profile.contacts[key]}
           />
         ))}
