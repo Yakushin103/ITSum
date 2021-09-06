@@ -5,13 +5,13 @@ export type PostItemType = {
 
 export type ContactsType = {
   facebook: string,
-  github: string,
-  vk: string,
-  instagram: string,
-  twitter: string,
-  mainlink: string,
-  youtube: string,
   website: string,
+  vk: string,
+  twitter: string,
+  instagram: string,
+  youtube: string,
+  github: string,
+  mainLink: string,
 }
 
 export type PhotosType = {
